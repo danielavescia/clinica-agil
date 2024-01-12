@@ -1,6 +1,6 @@
-﻿using ClinicaConsultas.Models.Domain;
+﻿using ClinicaConsultas.Data;
+using ClinicaConsultas.Models.Domain;
 using ClinicaConsultas.Services;
-using System.Text;
 
 namespace ClinicaConsultas.Utilities
 {
@@ -17,7 +17,6 @@ namespace ClinicaConsultas.Utilities
             this.PacientesCadastrados = PacientesCadastrados;
             this.AgendamentosCadastrados = AgendamentosCadastrados;
             MenuEstaAtivo = true;
-            int OpcaoMenu;
             Iniciar();
         }
 
@@ -59,6 +58,7 @@ namespace ClinicaConsultas.Utilities
 
                         MenuEstaAtivo = false;
                         Console.WriteLine( "Encerrando o sistema..." );
+                        LoadingData.SalvarDadosPacientes( PacientesCadastrados );
                         break;
 
                     default:
@@ -79,11 +79,11 @@ namespace ClinicaConsultas.Utilities
                 "1. Cadastrar Paciente",
                 "2. Marcar Consultas",
                 "3. Cancelamento de Consultas",
-                "4. Encerrar aplicação",
+                "4. Encerrar aplicação (Salvando os dados)",
                  "Digite a opção desejada:",
              };
 
-            Wait( 2000 );
+            Wait( 100 );
 
             Console.Clear();
             Mensagens.RetornaMenu( frases );

@@ -9,13 +9,11 @@ namespace ClinicaConsultas.Utilities
             try
             {
                 // Abre o arquivo para escrever os dados do paciente por linha
-                using ( StreamWriter escritor = new ( caminhoArquivo ) )
+                using StreamWriter escritor = new( caminhoArquivo );
+                foreach ( var paciente in pacientesCadastrados )
                 {
-                    foreach ( var paciente in pacientesCadastrados )
-                    {
-                        string linha = $"{paciente.IdPaciente},{paciente.Nome},{paciente.Telefone}";
-                        escritor.WriteLine( linha );
-                    }
+                    string linha = $"{paciente.IdPaciente},{paciente.Nome},{paciente.Telefone}";
+                    escritor.WriteLine( linha );
                 }
             }
             catch ( Exception ex )

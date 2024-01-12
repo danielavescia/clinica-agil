@@ -1,10 +1,12 @@
 ﻿using System.Text.RegularExpressions;
 using ClinicaConsultas.Models.Domain;
+using ClinicaConsultas.Utilities;
 
 namespace ClinicaConsultas.Utilities
 {
     public class Validador
     {
+        //Método que retorna um int validado pelo regex fornecido.
         public static int RetornaInt( string regex )
         {
             string input;
@@ -25,7 +27,7 @@ namespace ClinicaConsultas.Utilities
         //Método que retorna uma string validada pelo regex fornecido.
         public static string RetornaString( string regex )
         {
-            string input;
+            string input, mensagem = "Você precisa digitar algo válido. Por favor, tente novamente:";
 
             while ( true )
             {
@@ -36,10 +38,10 @@ namespace ClinicaConsultas.Utilities
                     return input;  
                 }
 
-                Console.WriteLine( "Você precisa digitar algo válido. Por favor, tente novamente:" );  
+                Mensagens.RetornaMensagem( mensagem );
             }
-
         }
 
     }
 }
+

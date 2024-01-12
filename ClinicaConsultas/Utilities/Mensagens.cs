@@ -33,7 +33,7 @@ namespace ClinicaConsultas.Utilities
 
             if ( frases == null )
             {
-                throw new ArgumentNullException( "Adicione strings ao array para imprimir as mensagens corretamente!" );
+                throw new Exception( "Adicione strings ao array para imprimir as mensagens corretamente!" );
             }
 
             else

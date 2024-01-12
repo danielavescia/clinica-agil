@@ -1,9 +1,5 @@
 ﻿using ClinicaConsultas.Models.Domain;
 using ClinicaConsultas.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
-
 
 namespace ClinicaConsultas.Services
 {
@@ -11,14 +7,13 @@ namespace ClinicaConsultas.Services
     {
         public static List<Paciente> UpdatePacientesList( List<Paciente> pacientesCadastrados ) 
         {
+            //criacao de paciente e confere se telefone já foi cadastrado p/outro paciente
             Paciente? p = CreatePaciente( pacientesCadastrados );
-            bool IsRepetead = IsPacientRepeated( p, pacientesCadastrados );
-            string mensagem = $"Paciente: {p.Nome} cadastrado com sucesso!";
+            bool IsRepetead = IsPacientRepeated( p.Telefone, pacientesCadastrados );
 
             if ( p == null ) //se paciente == nulo -  retorna para tela de criancao de pacientes
             {
-                Console.WriteLine( "Houve um erro na criacao do paciente. Por favor, tente novamente::" );
-                p = CreatePaciente( pacientesCadastrados );
+                Mensagens.RetornaMensagem( "Houve um erro na criacao do paciente. Por favor, tente novamente" );
             }
             else if ( p != null && IsRepetead == true ) //se paciente tem telefone existente no sistema chama update telefone
             {
@@ -27,7 +22,7 @@ namespace ClinicaConsultas.Services
             }
             else if ( p != null && IsRepetead == false ) //se está tudo ok paciente é adicionada a lista de Pacientes Cadastrados
             {   
-                Mensagens.RetornaMensagem( mensagem );
+                Mensagens.RetornaMensagem( $"Paciente: {p.Nome} cadastrado com sucesso!" );
                 pacientesCadastrados.Add( p );
             }
 
@@ -59,17 +54,18 @@ namespace ClinicaConsultas.Services
 
             } catch ( Exception e )
             {
-                Console.WriteLine( $"Houve um erro ao Criar Paciente: {e.Message}. Tente Novamente!");
+                Mensagens.RetornaMensagem( $"Houve um erro ao Criar Paciente: {e.Message}. Tente Novamente!");
                 return null;
             }
         }
 
-        public static bool IsPacientRepeated( Paciente p, List<Paciente> pacientesCadastrados ) 
+        //confere se o telefone se o telefone já consta como telefone de outro paciente
+        public static bool IsPacientRepeated( string telefone, List<Paciente> pacientesCadastrados ) 
 
         {
             foreach ( Paciente paciente in pacientesCadastrados ) 
             {
-                if ( p.Telefone.Equals( paciente.Telefone ) ) 
+                if ( telefone.Equals( paciente.Telefone ) ) 
                 {
                     return true;
                 }
@@ -80,14 +76,14 @@ namespace ClinicaConsultas.Services
         //funcao que apenas altera o telefone do paciente caso ele já conste no sistema
         public static Paciente UpdateTelephone( Paciente p, List<Paciente> pacientesCadastrados ) 
         {
-            string regexTelefone = "@\"^[0-9]+$", telefone, mensagem = "Este telefone já pertence a outro paciente. Por favor, digite outro telefone(são aceitos somente numeros";
+            string regexTelefone = @"^[0-9]?[0-9]*$", telefone;
             bool isTelefoneRepetead;
 
             while ( true )
             {
-                Mensagens.RetornaMensagem( mensagem );
+                Mensagens.RetornaMensagem( "Este telefone já pertence a outro paciente. Por favor, digite outro telefone(ex:51999999999)" );
                 telefone = Validador.RetornaString( regexTelefone );
-                isTelefoneRepetead = IsPacientRepeated(  p, pacientesCadastrados );
+                isTelefoneRepetead = IsPacientRepeated(  p.Telefone, pacientesCadastrados );
 
                 if( isTelefoneRepetead == false )
                 { 
@@ -98,13 +94,13 @@ namespace ClinicaConsultas.Services
         
         }
 
+        //imprime lista de pacientes Cadastrados
         public static void PrintPacietsList( List<Paciente> pacientesCadastrados ) 
         {
-            string mensagem = "Nao ha pacientes cadastrados no sistema!";
-
+            
             if ( pacientesCadastrados.Count == 0 ) 
             {
-                Mensagens.RetornaMensagem( mensagem );
+                Mensagens.RetornaMensagem( "Nao ha pacientes cadastrados no sistema!" );
             }
             foreach ( Paciente p in pacientesCadastrados ) 
             {

@@ -19,7 +19,15 @@ namespace ClinicaConsultas.Data
             return  pacientesCadastrados;
         }
 
+        public static void SalvarDadosPacientes( List<Paciente> pacientesCadastrados )
+        {
 
-   
+            string caminhoArquivo = "E:\\Dani\\Dani\\SI\\Unisinos\\2- Meus_Projetos\\AceleradoraAgil\\Exercicio1\\ClinicaConsultas\\ClinicaConsultas\\Assets\\Pacientes.txt";
+
+            EscreveTxt.EscreverDadosNoArquivo( caminhoArquivo, pacientesCadastrados );
+     
+        }
+
+
     }
 }
