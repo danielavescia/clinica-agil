@@ -1,0 +1,15 @@
+E:\Dani\Dani\SI\Unisinos\2- Meus_Projetos\AceleradoraAgil\Exercicio1\ClinicaConsultas\ClinicaConsultas\bin\Release\net7.0\ClinicaConsultas.exe
+E:\Dani\Dani\SI\Unisinos\2- Meus_Projetos\AceleradoraAgil\Exercicio1\ClinicaConsultas\ClinicaConsultas\bin\Release\net7.0\ClinicaConsultas.deps.json
+E:\Dani\Dani\SI\Unisinos\2- Meus_Projetos\AceleradoraAgil\Exercicio1\ClinicaConsultas\ClinicaConsultas\bin\Release\net7.0\ClinicaConsultas.runtimeconfig.json
+E:\Dani\Dani\SI\Unisinos\2- Meus_Projetos\AceleradoraAgil\Exercicio1\ClinicaConsultas\ClinicaConsultas\bin\Release\net7.0\ClinicaConsultas.dll
+E:\Dani\Dani\SI\Unisinos\2- Meus_Projetos\AceleradoraAgil\Exercicio1\ClinicaConsultas\ClinicaConsultas\bin\Release\net7.0\ClinicaConsultas.pdb
+E:\Dani\Dani\SI\Unisinos\2- Meus_Projetos\AceleradoraAgil\Exercicio1\ClinicaConsultas\ClinicaConsultas\obj\Release\net7.0\ClinicaConsultas.csproj.AssemblyReference.cache
+E:\Dani\Dani\SI\Unisinos\2- Meus_Projetos\AceleradoraAgil\Exercicio1\ClinicaConsultas\ClinicaConsultas\obj\Release\net7.0\ClinicaConsultas.GeneratedMSBuildEditorConfig.editorconfig
+E:\Dani\Dani\SI\Unisinos\2- Meus_Projetos\AceleradoraAgil\Exercicio1\ClinicaConsultas\ClinicaConsultas\obj\Release\net7.0\ClinicaConsultas.AssemblyInfoInputs.cache
+E:\Dani\Dani\SI\Unisinos\2- Meus_Projetos\AceleradoraAgil\Exercicio1\ClinicaConsultas\ClinicaConsultas\obj\Release\net7.0\ClinicaConsultas.AssemblyInfo.cs
+E:\Dani\Dani\SI\Unisinos\2- Meus_Projetos\AceleradoraAgil\Exercicio1\ClinicaConsultas\ClinicaConsultas\obj\Release\net7.0\ClinicaConsultas.csproj.CoreCompileInputs.cache
+E:\Dani\Dani\SI\Unisinos\2- Meus_Projetos\AceleradoraAgil\Exercicio1\ClinicaConsultas\ClinicaConsultas\obj\Release\net7.0\ClinicaConsultas.dll
+E:\Dani\Dani\SI\Unisinos\2- Meus_Projetos\AceleradoraAgil\Exercicio1\ClinicaConsultas\ClinicaConsultas\obj\Release\net7.0\refint\ClinicaConsultas.dll
+E:\Dani\Dani\SI\Unisinos\2- Meus_Projetos\AceleradoraAgil\Exercicio1\ClinicaConsultas\ClinicaConsultas\obj\Release\net7.0\ClinicaConsultas.pdb
+E:\Dani\Dani\SI\Unisinos\2- Meus_Projetos\AceleradoraAgil\Exercicio1\ClinicaConsultas\ClinicaConsultas\obj\Release\net7.0\ClinicaConsultas.genruntimeconfig.cache
+E:\Dani\Dani\SI\Unisinos\2- Meus_Projetos\AceleradoraAgil\Exercicio1\ClinicaConsultas\ClinicaConsultas\obj\Release\net7.0\ref\ClinicaConsultas.dll
