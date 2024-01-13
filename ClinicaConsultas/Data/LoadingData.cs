@@ -1,7 +1,6 @@
 ﻿using ClinicaConsultas.Models.Domain;
 using ClinicaConsultas.Utilities;
 
-
 namespace ClinicaConsultas.Data
 {
     

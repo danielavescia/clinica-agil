@@ -5,6 +5,7 @@ namespace ClinicaConsultas.Services
 {
     public class PacienteService
     {
+        //Valida criação do Paciente e adiciona a Lista de Pacientes cadastrados
         public static List<Paciente> UpdatePacientesList( List<Paciente> pacientesCadastrados ) 
         {
             //criacao de paciente e confere se telefone já foi cadastrado p/outro paciente
@@ -13,12 +14,11 @@ namespace ClinicaConsultas.Services
 
             if ( p == null ) //se paciente == nulo -  retorna para tela de criancao de pacientes
             {
-                Mensagens.RetornaMensagem( "Houve um erro na criacao do paciente. Por favor, tente novamente" );
+                Mensagens.RetornaMensagem( "Houve um erro na criacao do paciente. Por favor, tente novamente!" );
             }
-            else if ( p != null && IsRepetead == true ) //se paciente tem telefone existente no sistema chama update telefone
+            else if ( p != null && IsRepetead == true ) //se paciente tem telefone existente imprime mensagem e retorna p/menu
             {
-                UpdateTelephone( p, pacientesCadastrados );
-
+                Mensagens.RetornaMensagem( "Erro: Paciente já cadastrado! Retornando ao menu inicial..." );
             }
             else if ( p != null && IsRepetead == false ) //se está tudo ok paciente é adicionada a lista de Pacientes Cadastrados
             {   
@@ -34,6 +34,7 @@ namespace ClinicaConsultas.Services
         {
             string nome, telefone, regexNome = "^^(?!$).*", regexTelefone = @"^[0-9]?[0-9]*$";
             int id;
+           
 
             try 
             {   
@@ -46,7 +47,7 @@ namespace ClinicaConsultas.Services
                 Console.WriteLine( $"{"\n"}Número de telefone(são aceitos somente numeros):" );
                 telefone = Validador.RetornaString( regexTelefone );
 
-                id = CriaId.AtribuiId( pacientesCadastrados );
+                id = CriaId.IdGenerator( pacientesCadastrados );
 
                 Paciente paciente = new( id, nome, telefone );
 
@@ -73,29 +74,8 @@ namespace ClinicaConsultas.Services
             return false;
         }
 
-        //funcao que apenas altera o telefone do paciente caso ele já conste no sistema
-        public static Paciente UpdateTelephone( Paciente p, List<Paciente> pacientesCadastrados ) 
-        {
-            string regexTelefone = @"^[0-9]?[0-9]*$", telefone;
-            bool isTelefoneRepetead;
-
-            while ( true )
-            {
-                Mensagens.RetornaMensagem( "Este telefone já pertence a outro paciente. Por favor, digite outro telefone(ex:51999999999)" );
-                telefone = Validador.RetornaString( regexTelefone );
-                isTelefoneRepetead = IsPacientRepeated(  p.Telefone, pacientesCadastrados );
-
-                if( isTelefoneRepetead == false )
-                { 
-                    p.Telefone = telefone;
-                    return p;
-                }
-            }
-        
-        }
-
         //imprime lista de pacientes Cadastrados
-        public static void PrintPacietsList( List<Paciente> pacientesCadastrados ) 
+        public static void PrintPacientsList( List<Paciente> pacientesCadastrados ) 
         {
             
             if ( pacientesCadastrados.Count == 0 ) 

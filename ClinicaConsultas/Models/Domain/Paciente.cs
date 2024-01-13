@@ -18,11 +18,13 @@ namespace ClinicaConsultas.Models.Domain
         public override string ToString()
         {
             return
-               $@"
-               Paciente Id: {IdPaciente}
+                $@"
+               -------------------------------------------
+                DADOS PACIENTE {IdPaciente}:
+               -------------------------------------------
                Nome: {Nome}
                Telefone: {Telefone}
-               ";
+               --------------------------------------------";
         }
     }
 }

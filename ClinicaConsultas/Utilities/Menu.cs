@@ -6,7 +6,6 @@ namespace ClinicaConsultas.Utilities
 {
     public class Menu
     {
-
         private bool MenuEstaAtivo;
         private int OpcaoMenu;
         List<Paciente> PacientesCadastrados;
@@ -19,7 +18,6 @@ namespace ClinicaConsultas.Utilities
             MenuEstaAtivo = true;
             Iniciar();
         }
-
 
         //chamada de todos os métodos para executar o programa
         public void Iniciar()
@@ -57,6 +55,8 @@ namespace ClinicaConsultas.Utilities
                     case 4:
 
                         MenuEstaAtivo = false;
+                        Mensagens.RetornaMensagem( "Salvando os dados..." );
+                        Wait( 100 );
                         Console.WriteLine( "Encerrando o sistema..." );
                         LoadingData.SalvarDadosPacientes( PacientesCadastrados );
                         break;
@@ -79,7 +79,7 @@ namespace ClinicaConsultas.Utilities
                 "1. Cadastrar Paciente",
                 "2. Marcar Consultas",
                 "3. Cancelamento de Consultas",
-                "4. Encerrar aplicação (Salvando os dados)",
+                "4. Encerrar aplicação (Salvar os dados)",
                  "Digite a opção desejada:",
              };
 
