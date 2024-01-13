@@ -41,19 +41,18 @@ namespace ClinicaConsultas.Utilities
 
                     //Marcar Consultas
                     case 2:
-
-
-
+                        ConsultaService.UpdateAppointmentList( AgendamentosCadastrados, PacientesCadastrados  );
+                        Wait( 2000 );
                         break;
-
+                    
+                    //Cancelar Consultas
                     case 3:
-
-
-
+                        ConsultaService.DeleteAppointment( AgendamentosCadastrados );
+                        Wait( 2000 );
                         break;
 
+                    //Salvar dados dos pacientes no txt e Encerrar Programa
                     case 4:
-
                         MenuEstaAtivo = false;
                         Mensagens.RetornaMensagem( "Salvando os dados..." );
                         Wait( 100 );

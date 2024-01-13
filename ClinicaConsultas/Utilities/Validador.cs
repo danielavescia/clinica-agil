@@ -40,8 +40,7 @@ namespace ClinicaConsultas.Utilities
 
                 Mensagens.RetornaMensagem( mensagem );
             }
-        }
-
+        }      
     }
 }
 

@@ -2,7 +2,7 @@
 
 namespace ClinicaConsultas.Models.Domain
 {
-    public class Paciente
+    public class Paciente: IPaciente
     {
         public int IdPaciente { get; set; }
         public string Nome { get; set; }

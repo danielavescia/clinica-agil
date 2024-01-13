@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace ClinicaConsultas.Models.Domain
 {
-    public class Consulta
+    public class Consulta:IPaciente
     {
         public int IdConsulta { get; set; }
-        public Paciente IdPaciente { get; set; }
+        public int IdPaciente { get; set; }
 
         public DateOnly Data { get; set; }
 
@@ -18,7 +18,7 @@ namespace ClinicaConsultas.Models.Domain
 
         public string Especialidade { get; set; }
 
-        public Consulta(int IdConsulta, Paciente IdPaciente, DateOnly Data, TimeOnly Hora, string Especialidade ) 
+        public Consulta(int IdConsulta, int IdPaciente, DateOnly Data, TimeOnly Hora, string Especialidade ) 
         {
             this.IdConsulta = IdConsulta;
             this.IdPaciente = IdPaciente;
@@ -34,7 +34,6 @@ namespace ClinicaConsultas.Models.Domain
                -------------------------------------------
                 DADOS REFERENTES DA CONSULTA {IdConsulta}:
                -------------------------------------------
-               IdPaciente: {IdPaciente}
                Data: {Data}
                Hora: {Hora}
                Especialidade: {Especialidade}
