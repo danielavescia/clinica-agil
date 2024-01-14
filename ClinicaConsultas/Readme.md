@@ -9,9 +9,8 @@ versão: .net 7.0
 
 
 # Uso
-1 - Abra o terminal de comando 
-2 - Navegue até diretório do projeto
-3 - Execute o comando :dotnet run
+ 
+3 - Execute o ClinicaConsultas.exe (bin\Release\net7.0\ClinicaConsultas.exe)
 
 OU 
 
