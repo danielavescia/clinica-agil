@@ -4,7 +4,7 @@ namespace ClinicaConsultas.Utilities
 {
     public class EscreveTxt
     {
-        public static void EscreverDadosNoArquivo( string caminhoArquivo, List<Paciente> pacientesCadastrados )
+        public static void WriteFile( string caminhoArquivo, List<Paciente> pacientesCadastrados )
         {
             try
             {

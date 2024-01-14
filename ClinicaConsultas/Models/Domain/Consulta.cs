@@ -12,18 +12,15 @@ namespace ClinicaConsultas.Models.Domain
         public int IdConsulta { get; set; }
         public int IdPaciente { get; set; }
 
-        public DateOnly Data { get; set; }
-
-        public TimeOnly Hora { get; set; }
+        public DateTime Agendamento { get; set; }
 
         public string Especialidade { get; set; }
 
-        public Consulta(int IdConsulta, int IdPaciente, DateOnly Data, TimeOnly Hora, string Especialidade ) 
+        public Consulta(int IdConsulta, int IdPaciente, DateTime Agendamento,  string Especialidade ) 
         {
             this.IdConsulta = IdConsulta;
             this.IdPaciente = IdPaciente;
-            this.Data = Data;
-            this.Hora = Hora;
+            this.Agendamento = Agendamento;
             this.Especialidade = Especialidade;
         }
 
@@ -34,8 +31,8 @@ namespace ClinicaConsultas.Models.Domain
                -------------------------------------------
                 DADOS REFERENTES DA CONSULTA {IdConsulta}:
                -------------------------------------------
-               Data: {Data}
-               Hora: {Hora}
+               Data: {Agendamento.Day}/{Agendamento.Month}/{Agendamento.Year}
+               Hora: {Agendamento.TimeOfDay}
                Especialidade: {Especialidade}
                --------------------------------------------";
         }

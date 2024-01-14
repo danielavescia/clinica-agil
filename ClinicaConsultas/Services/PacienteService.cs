@@ -1,5 +1,6 @@
 ﻿using ClinicaConsultas.Models.Domain;
 using ClinicaConsultas.Utilities;
+using System.ComponentModel;
 
 namespace ClinicaConsultas.Services
 {
@@ -14,15 +15,15 @@ namespace ClinicaConsultas.Services
 
             if ( p == null ) //se paciente == nulo -  retorna para tela de criancao de pacientes
             {
-                Mensagens.RetornaMensagem( "Houve um erro na criacao do paciente. Por favor, tente novamente!" );
+                Mensagens.MessageWriter( "Houve um erro na criacao do paciente. Por favor, tente novamente!" );
             }
             else if ( p != null && IsRepetead == true ) //se paciente tem telefone existente imprime mensagem e retorna p/menu
             {
-                Mensagens.RetornaMensagem( "Erro: Paciente já cadastrado! Retornando ao menu inicial..." );
+                Mensagens.MessageWriter( "Erro: Paciente já cadastrado! Retornando ao menu inicial..." );
             }
             else if ( p != null && IsRepetead == false ) //se está tudo ok paciente é adicionada a lista de Pacientes Cadastrados
             {   
-                Mensagens.RetornaMensagem( $"Paciente: {p.Nome} cadastrado com sucesso!" );
+                Mensagens.MessageWriter( $"Paciente: {p.Nome} cadastrado com sucesso!" );
                 pacientesCadastrados.Add( p );
             }
 
@@ -34,18 +35,17 @@ namespace ClinicaConsultas.Services
         {
             string nome, telefone, regexNome = "^^(?!$).*", regexTelefone = @"^[0-9]?[0-9]*$";
             int id;
-           
 
             try 
             {   
-                Mensagens.RetornaMensagem( "     CRIAR PACIENTE     " );
+                Mensagens.MessageWriter( "     CRIAR PACIENTE     " );
                 Console.WriteLine( "Para criar uma paciente adicione as informacoes solicitadas abaixo:" );
 
                 Console.WriteLine( $"{"\n"}Digite o nome do paciente:" );
-                nome = Validador.RetornaString( regexNome );
+                nome = Validador.ReturnString( regexNome, "Por favor, digite o o nome do paciente:" );
 
                 Console.WriteLine( $"{"\n"}Número de telefone(são aceitos somente numeros):" );
-                telefone = Validador.RetornaString( regexTelefone );
+                telefone = Validador.ReturnString( regexTelefone, "Por favor, são aceitos somente numeros. Digite novamente o telefone: " );
 
                 id = CriaId.IdGenerator( pacientesCadastrados );
 
@@ -55,8 +55,8 @@ namespace ClinicaConsultas.Services
 
             } catch ( Exception e )
             {
-                Mensagens.RetornaMensagem( $"Houve um erro ao Criar Paciente: {e.Message}. Tente Novamente!");
-                return null;
+                Mensagens.MessageWriter( $"Houve um erro ao Criar Paciente: {e.Message}. Tente Novamente!");
+                return  null;
             }
         }
 
@@ -77,14 +77,17 @@ namespace ClinicaConsultas.Services
         //imprime lista de pacientes Cadastrados
         public static void PrintPacientsList( List<Paciente> pacientesCadastrados ) 
         {
-            
-            if ( pacientesCadastrados.Count == 0 ) 
+
+            if ( pacientesCadastrados.Count == 0 )
             {
-                Mensagens.RetornaMensagem( "Nao ha pacientes cadastrados no sistema!" );
+                Mensagens.MessageWriter( "Nao ha pacientes cadastrados no sistema!" );
             }
-            foreach ( Paciente p in pacientesCadastrados ) 
+            else
             {
-                p.ToString();
+                foreach ( Paciente p in pacientesCadastrados )
+                {
+                    Console.WriteLine(p.ToString());
+                }
             }
         }
     }

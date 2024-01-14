@@ -5,7 +5,7 @@ namespace ClinicaConsultas.Utilities
 {
     public class LeitorTxt
     {
-        public static List<Paciente> LerDadosDoArquivo( string caminhoArquivo )
+        public static List<Paciente> FileReader( string caminhoArquivo )
         {
             List<Paciente> pacientesCadastrados= new ();
 

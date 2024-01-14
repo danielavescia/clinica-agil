@@ -6,7 +6,7 @@ namespace ClinicaConsultas.Utilities
     public class Mensagens
     {
         //constroi as mensagens do sistema conforme o parametro inserido
-        public static void RetornaMensagem( String mensagem )
+        public static void MessageWriter( String mensagem )
         {
 
             StringBuilder sb = new();
@@ -24,7 +24,7 @@ namespace ClinicaConsultas.Utilities
             Console.Write(sb);
         }
 
-        public static void RetornaMenu( string [] frases )
+        public static void PrintMenu( string [] frases )
         {
             StringBuilder sb = new();
 
@@ -36,7 +36,7 @@ namespace ClinicaConsultas.Utilities
             else
             {
 
-                int indiceMaiorPalavra = RetornaMaiorString( frases );
+                int indiceMaiorPalavra = ReturnBiggestString( frases );
                 int larguraMenu = frases [indiceMaiorPalavra].Length;
 
                 sb.AppendLine( $".{new string( '_', larguraMenu + 2 )}." );
@@ -55,7 +55,7 @@ namespace ClinicaConsultas.Utilities
 
         }
 
-        public static int RetornaMaiorString( string [] frases )
+        public static int ReturnBiggestString( string [] frases )
         {
             int indiceMaiorPalavra;
 

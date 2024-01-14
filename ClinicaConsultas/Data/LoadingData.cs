@@ -11,22 +11,38 @@ namespace ClinicaConsultas.Data
         {
             List<Paciente> pacientesCadastrados = new();
 
-            string caminhoArquivo = "E:\\Dani\\Dani\\SI\\Unisinos\\2- Meus_Projetos\\AceleradoraAgil\\Exercicio1\\ClinicaConsultas\\ClinicaConsultas\\Assets\\Pacientes.txt";
+            string caminhoArquivo;
 
-            pacientesCadastrados = LeitorTxt.LerDadosDoArquivo( caminhoArquivo );
+            caminhoArquivo = PathConstructor();
+
+            pacientesCadastrados = LeitorTxt.FileReader( caminhoArquivo );
 
             return  pacientesCadastrados;
         }
 
         public static void SalvarDadosPacientes( List<Paciente> pacientesCadastrados )
         {
+            string caminhoArquivo, caminhoArquivoCompleto;
 
-            string caminhoArquivo = "E:\\Dani\\Dani\\SI\\Unisinos\\2- Meus_Projetos\\AceleradoraAgil\\Exercicio1\\ClinicaConsultas\\ClinicaConsultas\\Assets\\Pacientes.txt";
+            caminhoArquivo = PathConstructor();
 
-            EscreveTxt.EscreverDadosNoArquivo( caminhoArquivo, pacientesCadastrados );
+            EscreveTxt.WriteFile( caminhoArquivo, pacientesCadastrados );
      
         }
 
+        public static string PathConstructor() 
+        {
+            // Obtém o diretório do arquivo do assembly que contém a classe Program
+            string diretorioAtual = Path.GetDirectoryName( typeof( Program ).Assembly.Location );
 
+            // Navega até 3 diretorios 
+            string diretorioDestino = Path.Combine( diretorioAtual, "..", "..", ".." );
+
+            // Constroi todo o caminho do arquivo
+            string caminhoArquivo = Path.GetFullPath( diretorioDestino );
+
+            return caminhoArquivo + "//Data//Pacientes.txt";
+
+        }
     }
 }

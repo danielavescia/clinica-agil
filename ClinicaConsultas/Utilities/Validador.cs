@@ -1,33 +1,34 @@
-﻿using System.Text.RegularExpressions;
-using ClinicaConsultas.Models.Domain;
-using ClinicaConsultas.Utilities;
+﻿using System.Collections;
+using System.Text.RegularExpressions;
+
 
 namespace ClinicaConsultas.Utilities
 {
     public class Validador
     {
         //Método que retorna um int validado pelo regex fornecido.
-        public static int RetornaInt( string regex )
+        public static int ReturnInt( string regex, string message )
         {
             string input;
-            bool isValid;
 
-            do
+            while ( true )
             {
                 input = Console.ReadLine();
-                isValid = Regex.IsMatch( input, regex );
 
-                
-            } while ( !isValid );
+                if ( Regex.IsMatch( input, regex ) )
+                {
 
-            return int.Parse( input );
+                    return int.Parse( input );
+                }
 
+                Mensagens.MessageWriter( message );
+            }
         }
 
         //Método que retorna uma string validada pelo regex fornecido.
-        public static string RetornaString( string regex )
+        public static string ReturnString( string regex, string message )
         {
-            string input, mensagem = "Você precisa digitar algo válido. Por favor, tente novamente:";
+            string input;
 
             while ( true )
             {
@@ -38,9 +39,30 @@ namespace ClinicaConsultas.Utilities
                     return input;  
                 }
 
-                Mensagens.RetornaMensagem( mensagem );
+                Mensagens.MessageWriter( message );
             }
-        }      
+        }
+
+        //Método que retorna um int válido e correspondente a posição do paciente selecionado na lista de pacientesCadastrados
+        public static int ReturnValidId( IList list, string message )
+        {
+            int idlist;
+            int intervaloMaximo = list.Count;
+
+            do
+            {
+                string regex = "^^[0-9]+$"; // regex que permite qualquer caracter exceto numeros
+                idlist = Validador.ReturnInt( regex, "Input inválid. Por favor, tente novamente (insira somente números):" );
+
+                if ( idlist < 0 || idlist > intervaloMaximo )
+                {
+                    Mensagens.MessageWriter( message );
+                }
+
+            } while ( idlist < 0 || idlist > intervaloMaximo );
+
+            return idlist - 1; // pegar a posicao na lista corretamente 
+        }
     }
 }
 

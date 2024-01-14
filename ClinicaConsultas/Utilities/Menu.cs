@@ -26,9 +26,9 @@ namespace ClinicaConsultas.Utilities
             while ( MenuEstaAtivo )
             {
 
-                ImprimeMenuInicial();
+                PrintMenu();
                 string regex = "^[1-9][0-9]*$";
-                OpcaoMenu = Validador.RetornaInt( regex );
+                OpcaoMenu = Validador.ReturnInt( regex, "Digite um numero! Tente novamente:" );
                 Console.WriteLine( "Direcionando para a opcao desejada.." );
 
                 switch ( OpcaoMenu )
@@ -54,7 +54,7 @@ namespace ClinicaConsultas.Utilities
                     //Salvar dados dos pacientes no txt e Encerrar Programa
                     case 4:
                         MenuEstaAtivo = false;
-                        Mensagens.RetornaMensagem( "Salvando os dados..." );
+                        Mensagens.MessageWriter( "Salvando os dados..." );
                         Wait( 100 );
                         Console.WriteLine( "Encerrando o sistema..." );
                         LoadingData.SalvarDadosPacientes( PacientesCadastrados );
@@ -68,7 +68,7 @@ namespace ClinicaConsultas.Utilities
         }
 
         //metodo que imprime menu inicial
-        public static void ImprimeMenuInicial()
+        public static void PrintMenu()
         {
            
             string [] frases = new string []
@@ -83,9 +83,8 @@ namespace ClinicaConsultas.Utilities
              };
 
             Wait( 100 );
-
             Console.Clear();
-            Mensagens.RetornaMenu( frases );
+            Mensagens.PrintMenu( frases );
      
         }
 
