@@ -20,7 +20,7 @@ namespace ClinicaConsultas.Services
             }
             
             //se está tudo ok paciente é adicionada a lista de Consultas Cadastrados
-            Mensagens.MessageWriter( $"Consulta: cadastrado com sucesso! {c.ToString} " );
+            Mensagens.MessageWriter( $"Consulta: cadastrado com sucesso! " );
             consultasCadastradas.Add( c );
             
             return consultasCadastradas;
@@ -85,13 +85,14 @@ namespace ClinicaConsultas.Services
                 Console.WriteLine( $"{"\n"}Para desmarcar consulta digite a Id da consulta:" );
                 int posicaoConsulta = Validador.ReturnValidId( consultasCadastradas, "O número se encontra fora do intervalo das IDs de Consultas cadastradas" );
 
-                consultasCadastradas [posicaoConsulta].ToString();
+                Console.WriteLine( consultasCadastradas [posicaoConsulta].ToString());
                 Console.WriteLine( $"{"\n"}Digite 1 para confirmar o cancelamento da consulta ou 2 para voltar ao menu inicial:" );
                 opcao = Validador.ReturnInt( regex, "Entrada inválida, digite 1 p/cancelar ou 2 p/ voltar ao menu inicial" );
 
                 if ( opcao == 1 )
                 {
                     consultasCadastradas.RemoveAt( posicaoConsulta );
+                    Mensagens.MessageWriter( "Consulta Cancelada! Retornando ao Menu inicial..." );
                 }
 
                 else if ( opcao == 2 )
@@ -144,15 +145,20 @@ namespace ClinicaConsultas.Services
 
             foreach ( Consulta c in consultasCadastrados ) 
             {
-                if ( c.Agendamento.Equals( agendamentoDesejado ) || agendamentoDesejado < diaHoje ) 
+                if ( c.Agendamento.Equals( agendamentoDesejado ) )
                 {
-                    
 
-                    if ( (c.Agendamento).TimeOfDay.Equals( agendamentoDesejado.TimeOfDay ) ) 
+                    if ( ( c.Agendamento ).TimeOfDay.Equals( agendamentoDesejado.TimeOfDay ) )
                     {
                         Mensagens.MessageWriter( "Já há uma consulta marcada neste horário! Tente Novamente:" );
                         return false;
                     }
+                }
+
+                else if ( agendamentoDesejado < diaHoje ) 
+                {
+                    Mensagens.MessageWriter( "Não é possível marcar em datas retrogradas! Tente Novamente:" );
+                    return false;
                 }
             }
             return true;
